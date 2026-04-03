@@ -877,3 +877,114 @@ blockquote cite {
     height: 400px;
   }
 }
+
+/* === DEMO SEKCE === */
+.demo-wrapper {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 80px 40px;
+  background: rgba(168, 85, 247, 0.05);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.demo-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(168,85,247,0.12) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.demo-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #A855F7;
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  background: rgba(168, 85, 247, 0.1);
+  padding: 6px 16px;
+  border-radius: 999px;
+  margin-bottom: 28px;
+  font-weight: 600;
+}
+
+.demo-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  color: #f5f5f7;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.demo-subtitle {
+  font-size: 1.1rem;
+  color: #86868b;
+  line-height: 1.7;
+  max-width: 560px;
+  margin: 0 auto 40px;
+}
+
+.demo-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.demo-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #f5f5f7;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.demo-step-num {
+  width: 28px;
+  height: 28px;
+  background: #A855F7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.demo-step-arrow {
+  color: #A855F7;
+  font-size: 1.25rem;
+  opacity: 0.6;
+}
+
+.demo-cta {
+  font-size: 1rem;
+  padding: 14px 36px;
+}
+
+@media (max-width: 768px) {
+  .demo-wrapper {
+    padding: 48px 24px;
+  }
+  .demo-step-arrow {
+    display: none;
+  }
+  .demo-steps {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
