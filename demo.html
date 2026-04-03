@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Starosta — Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      min-height: 100vh;
+    }
+    a { color: #A855F7; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Loading */
+    .state { display: none; }
+    .state.active { display: flex; }
+
+    #loading {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      gap: 24px;
+    }
+    .spinner {
+      width: 48px; height: 48px;
+      border: 4px solid rgba(168,85,247,0.2);
+      border-top-color: #A855F7;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #loading p { color: #a1a1aa; font-size: 15px; }
+
+    /* Error / Expired */
+    #error, #expired {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      gap: 16px;
+      padding: 24px;
+    }
+    .state-icon { font-size: 56px; margin-bottom: 8px; }
+    .state h2 { font-size: 28px; font-weight: 700; }
+    .state p.desc { color: #a1a1aa; max-width: 440px; line-height: 1.6; }
+    .state .btn-link {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 24px;
+      background: #A855F7;
+      color: #fff;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+    .state .btn-link:hover { background: #9333ea; text-decoration: none; }
+
+    /* Demo */
+    #demo {
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 32px;
+      border-bottom: 1px solid #1a1a2e;
+    }
+    .navbar img { height: 36px; }
+    .navbar .access-info { font-size: 13px; color: #71717a; }
+
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 64px 24px 48px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: rgba(168,85,247,0.12);
+      border: 1px solid rgba(168,85,247,0.3);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #A855F7;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 0%, #a1a1aa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero > p {
+      color: #a1a1aa;
+      max-width: 600px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+      font-size: 16px;
+    }
+
+    .embed-box {
+      width: 100%;
+      max-width: 900px;
+      aspect-ratio: 16/9;
+      background: #111;
+      border: 2px solid #A855F7;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .embed-box .icon { font-size: 48px; }
+    .embed-box .label { font-size: 18px; font-weight: 600; }
+    .embed-box .sublabel { font-size: 13px; color: #71717a; }
+
+    .meta {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #52525b;
+    }
+
+    .demo-footer {
+      text-align: center;
+      padding: 24px;
+      border-top: 1px solid #1a1a2e;
+      font-size: 13px;
+      color: #52525b;
+    }
+    .demo-footer a { color: #71717a; }
+  </style>
+</head>
+<body>
+
+  <!-- Loading -->
+  <div id="loading" class="state active">
+    <div class="spinner"></div>
+    <p>Ověřujeme přístup...</p>
+  </div>
+
+  <!-- Error -->
+  <div id="error" class="state">
+    <div class="state-icon">🔒</div>
+    <h2>Přístup není povolen</h2>
+    <p class="desc">Tento odkaz není platný nebo byl deaktivován. Kontaktujte nás pro nový přístup.</p>
+    <a href="https://ai-starosta.vercel.app" class="btn-link">Zpět na ai-starosta.vercel.app</a>
+  </div>
+
+  <!-- Expired -->
+  <div id="expired" class="state">
+    <div class="state-icon">⏰</div>
+    <h2>Demo vypršelo</h2>
+    <p class="desc">Platnost tohoto odkazu skončila. Chcete nový? Napište nám.</p>
+    <a href="mailto:martin@produkce.ai" class="btn-link">Napsat e-mail</a>
+  </div>
+
+  <!-- Demo -->
+  <div id="demo" class="state">
+    <nav class="navbar">
+      <img src="public/img/logo-white.jpg" alt="AI Starosta">
+      <span class="access-info" id="accessInfo"></span>
+    </nav>
+    <section class="hero">
+      <div class="badge">🎯 Živé demo</div>
+      <h1>Vyzkoušejte AI Starostu</h1>
+      <p>Popovídejte si přímo se starostou Martinem Žabčíkem z Ratiboře. Zeptejte se na cokoliv — úřední hodiny, investice, místní akce...</p>
+      <div class="embed-box">
+        <div class="icon">🎬</div>
+        <div class="label">Zde bude vložen živý widget AI Starosty</div>
+        <div class="sublabel">Embed kód bude doplněn</div>
+      </div>
+      <p class="meta" id="metaInfo"></p>
+    </section>
+    <footer class="demo-footer">© 2026 AI Produkce s.r.o. | <a href="https://produkce.ai">produkce.ai</a></footer>
+  </div>
+
+  <script>
+    const SUPABASE_URL = "https://bnbzibkxcjuatwkdnrbs.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJuYnppYmt4Y2p1YXR3a2RucmJzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5MDE1MTksImV4cCI6MjA4ODQ3NzUxOX0.DKb_WOaWkTayMQqH2s27TtFeNeWfOqDKt8FicVKEvNs";
+
+    function show(id) {
+      document.querySelectorAll('.state').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function showError() { show('error'); }
+    function showExpired() { show('expired'); }
+
+    function formatDate(iso) {
+      return new Date(iso).toLocaleDateString("cs-CZ", { day: "numeric", month: "long", year: "numeric" });
+    }
+
+    function showDemo(record) {
+      document.getElementById('accessInfo').textContent =
+        `Exkluzivní přístup pro ${record.starosta_jmeno}, ${record.obec}`;
+      document.getElementById('metaInfo').textContent =
+        `Demo je dostupné do ${formatDate(record.expires_at)}. Počet spuštění: ${record.opened_count || 1}.`;
+      show('demo');
+    }
+
+    async function checkToken() {
+      const params = new URLSearchParams(window.location.search);
+      const token = params.get("token");
+
+      if (!token) { showError(); return; }
+
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/demo_tokens?token=eq.${token}&select=*`, {
+          headers: {
+            "apikey": SUPABASE_ANON_KEY,
+            "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
+          }
+        });
+
+        const data = await res.json();
+        if (!data.length || !data[0].active) { showError(); return; }
+
+        const record = data[0];
+        if (new Date(record.expires_at) < new Date()) { showExpired(); return; }
+
+        const newCount = (record.opened_count || 0) + 1;
+
+        await fetch(`${SUPABASE_URL}/rest/v1/demo_tokens?token=eq.${token}`, {
+          method: "PATCH",
+          headers: {
+            "apikey": SUPABASE_ANON_KEY,
+            "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
+            "Content-Type": "application/json",
+            "Prefer": "return=minimal"
+          },
+          body: JSON.stringify({
+            opened_at: record.opened_at || new Date().toISOString(),
+            opened_count: newCount
+          })
+        });
+
+        record.opened_count = newCount;
+        showDemo(record);
+      } catch (e) {
+        console.error(e);
+        showError();
+      }
+    }
+
+    checkToken();
+  </script>
+</body>
+</html>
