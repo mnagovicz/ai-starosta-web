@@ -11,10 +11,12 @@ html {
 
 body {
   font-family: 'Inter', sans-serif;
-  background: #0f0f0f;
-  color: #ffffff;
-  line-height: 1.6;
+  background: #000000;
+  color: #f5f5f7;
+  line-height: 1.7;
+  font-size: 1.125rem;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -34,39 +36,38 @@ ul {
 /* === CONTAINER === */
 .container {
   width: 100%;
-  max-width: 1120px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 48px;
 }
 
 /* === BUTTONS === */
 .btn {
   display: inline-block;
-  padding: 14px 28px;
-  font-size: 1rem;
+  padding: 12px 28px;
+  font-size: 0.9375rem;
   font-weight: 600;
-  border-radius: 8px;
+  border-radius: 980px;
   cursor: pointer;
-  transition: background 0.2s, border-color 0.2s, transform 0.2s;
-  border: 2px solid transparent;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: none;
   text-align: center;
 }
 
 .btn-primary {
   background: #A855F7;
   color: #fff;
-  border-color: #A855F7;
 }
 
 .btn-primary:hover {
   background: #9333ea;
-  border-color: #9333ea;
+  transform: scale(1.02);
 }
 
 .btn-outline {
   background: transparent;
-  color: #fff;
-  border-color: #fff;
+  color: #f5f5f7;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .btn-outline:hover {
@@ -75,8 +76,8 @@ ul {
 }
 
 .btn-sm {
-  padding: 10px 20px;
-  font-size: 0.9rem;
+  padding: 8px 20px;
+  font-size: 0.875rem;
 }
 
 .btn-full {
@@ -87,27 +88,34 @@ ul {
 .badge {
   display: inline-block;
   padding: 8px 20px;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: #A855F7;
-  border: 1px solid #A855F7;
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  background: rgba(168, 85, 247, 0.1);
   border-radius: 999px;
 }
 
 /* === NAVBAR === */
 .navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
-  background: #111111;
-  border-bottom: 1px solid #222;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .navbar-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  height: 52px;
 }
 
 .navbar-logo img {
@@ -117,30 +125,60 @@ ul {
 
 /* === HERO === */
 .hero {
+  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 120px 0 80px;
+  padding-top: 80px;
+  overflow: hidden;
+}
+
+.hero-blob {
+  content: "";
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
 }
 
 .hero-inner {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 24px;
+  gap: 28px;
 }
 
-.hero h1 {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+.hero-title {
+  font-size: clamp(3.5rem, 8vw, 6rem);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffffff, #A855F7, #ffffff, #9333ea);
+  background-size: 300% 300%;
+  animation: gradientShift 6s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .hero-sub {
   font-size: 1.25rem;
-  color: #a0a0a0;
+  color: #86868b;
   max-width: 600px;
+  line-height: 1.7;
 }
 
 .hero-buttons {
@@ -151,50 +189,69 @@ ul {
 }
 
 .hero-video {
+  position: relative;
   width: 100%;
   max-width: 900px;
   aspect-ratio: 16 / 9;
-  background: #1a1a1a;
-  border: 1px solid #333;
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 24px;
+  overflow: hidden;
+}
+
+.hero-video-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.5), rgba(168, 85, 247, 0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .hero-video span {
   font-size: 1.25rem;
-  color: #fff;
-  opacity: 0.5;
+  color: #86868b;
 }
 
 /* === SECTIONS === */
 .section {
-  padding: 80px 0;
+  padding: 120px 0;
+}
+
+.section-dark {
+  background: #000000;
 }
 
 .section-alt {
-  background: #0a0a0a;
+  background: #0d0d0d;
 }
 
 .section-contact {
-  background: #111111;
+  background: #0d0d0d;
 }
 
 .section-title {
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 700;
+  letter-spacing: -0.015em;
   text-align: center;
   margin-bottom: 16px;
+  color: #f5f5f7;
 }
 
 .section-sub {
   text-align: center;
-  color: #a0a0a0;
+  color: #86868b;
   max-width: 600px;
   margin: 0 auto 48px;
-  font-size: 1.1rem;
+  font-size: 1.125rem;
+  line-height: 1.7;
 }
 
 /* === GRID === */
@@ -212,18 +269,21 @@ ul {
   margin-top: 48px;
 }
 
-/* === CARDS === */
+/* === CARDS (Glassmorphism) === */
 .card {
-  background: #1a1a1a;
-  border: 1px solid #2a2a2a;
-  border-radius: 16px;
-  padding: 32px;
-  transition: box-shadow 0.3s, border-color 0.3s;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 36px;
+  transition: border-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .card:hover {
-  border-color: #A855F7;
-  box-shadow: 0 0 24px rgba(168, 85, 247, 0.15);
+  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.1);
 }
 
 .card-icon {
@@ -235,11 +295,13 @@ ul {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 8px;
+  color: #f5f5f7;
 }
 
 .card p {
-  color: #a0a0a0;
-  font-size: 0.95rem;
+  color: #86868b;
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
 /* === BENEFITS === */
@@ -252,7 +314,8 @@ ul {
 }
 
 .benefits li {
-  font-size: 1.1rem;
+  font-size: 1.125rem;
+  color: #f5f5f7;
 }
 
 .check {
@@ -261,28 +324,45 @@ ul {
 
 /* === STATS === */
 .stats {
-  max-width: 600px;
+  max-width: 640px;
   margin: 48px auto 0;
+  position: relative;
 }
 
-.stat-card {
-  background: #1a1a1a;
-  border: 1px solid #2a2a2a;
-  border-radius: 16px;
-  padding: 32px;
+.stats .stat-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 48px 32px;
   text-align: center;
 }
 
+.stat-divider {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1px;
+  height: 60%;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 1;
+}
+
 .stat-number {
-  font-size: 4rem;
+  font-size: 6rem;
   font-weight: 700;
-  color: #A855F7;
   line-height: 1;
+  background: linear-gradient(135deg, #ffffff 0%, #A855F7 50%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .stat-label {
-  color: #a0a0a0;
-  margin-top: 8px;
+  color: #86868b;
+  margin-top: 12px;
   font-size: 1rem;
 }
 
@@ -309,11 +389,13 @@ ul {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 8px;
+  color: #f5f5f7;
 }
 
 .step p {
-  color: #a0a0a0;
-  font-size: 0.95rem;
+  color: #86868b;
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
 /* === RATIBOŘ === */
@@ -325,33 +407,53 @@ ul {
 }
 
 blockquote {
-  border-left: 4px solid #A855F7;
-  padding-left: 24px;
+  position: relative;
+  border: none;
+  padding: 0 60px;
+  max-width: 720px;
+  margin: 48px auto;
+  text-align: center;
+}
+
+blockquote::before {
+  content: "\201C";
+  position: absolute;
+  top: -30px;
+  left: 0;
+  font-size: 8rem;
+  color: #A855F7;
+  opacity: 0.2;
+  line-height: 1;
+  pointer-events: none;
+}
+
+blockquote p,
+blockquote {
+  font-size: 1.5rem;
   font-style: italic;
-  color: #a0a0a0;
-  max-width: 640px;
-  margin: 32px auto;
-  text-align: left;
-  font-size: 1.1rem;
+  font-weight: 300;
+  color: #f5f5f7;
   line-height: 1.7;
 }
 
 blockquote cite {
   display: block;
-  margin-top: 12px;
+  margin-top: 20px;
   font-style: normal;
-  font-weight: 600;
-  color: #fff;
-  font-size: 0.95rem;
+  font-weight: 400;
+  color: #86868b;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .photo-placeholder {
   width: 100%;
   max-width: 700px;
   aspect-ratio: 16 / 9;
-  background: #1a1a1a;
-  border: 1px solid #333;
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -359,8 +461,7 @@ blockquote cite {
 }
 
 .photo-placeholder span {
-  color: #fff;
-  opacity: 0.5;
+  color: #86868b;
 }
 
 .media-badges {
@@ -368,16 +469,19 @@ blockquote cite {
   gap: 12px;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 16px;
 }
 
 .media-badge {
-  background: #1a1a1a;
-  border: 1px solid #333;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 999px;
   padding: 8px 20px;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  color: #a0a0a0;
+  color: #86868b;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 /* === CONTACT FORM === */
@@ -390,23 +494,23 @@ blockquote cite {
 }
 
 .contact-form input {
-  background: #1a1a1a;
-  border: 1px solid #333;
-  border-radius: 8px;
-  padding: 12px 16px;
-  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 14px 18px;
+  color: #f5f5f7;
   font-size: 1rem;
   font-family: 'Inter', sans-serif;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .contact-form input::placeholder {
-  color: #666;
+  color: #86868b;
 }
 
 .contact-form input:focus {
-  border-color: #A855F7;
+  border-color: rgba(168, 85, 247, 0.6);
 }
 
 .form-success {
@@ -415,19 +519,20 @@ blockquote cite {
   text-align: center;
   font-size: 1.25rem;
   padding: 32px 0;
+  color: #f5f5f7;
 }
 
 .contact-info {
   text-align: center;
-  color: #a0a0a0;
+  color: #86868b;
   margin-top: 32px;
   font-size: 0.95rem;
 }
 
 /* === FOOTER === */
 .footer {
-  background: #0a0a0a;
-  border-top: 1px solid #1a1a1a;
+  background: #000000;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding: 40px 0;
 }
 
@@ -446,24 +551,25 @@ blockquote cite {
   display: flex;
   align-items: center;
   gap: 24px;
-  color: #a0a0a0;
-  font-size: 0.875rem;
+  color: #86868b;
+  font-size: 0.8rem;
 }
 
 .footer-right a {
-  color: #a0a0a0;
-  transition: color 0.2s;
+  color: #86868b;
+  transition: color 0.3s;
 }
 
 .footer-right a:hover {
   color: #A855F7;
 }
 
-/* === FADE ANIMATION === */
+/* === FADE ANIMATION (Apple-style) === */
 .fade-up {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .fade-up.visible {
@@ -473,6 +579,10 @@ blockquote cite {
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+
   .grid-3 {
     grid-template-columns: 1fr;
   }
@@ -482,16 +592,17 @@ blockquote cite {
   }
 
   .section {
-    padding: 56px 0;
+    padding: 80px 0;
   }
 
   .hero {
-    padding: 100px 0 56px;
+    padding-top: 72px;
     min-height: auto;
+    padding-bottom: 60px;
   }
 
-  .hero h1 {
-    font-size: 2rem;
+  .hero-title {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
   }
 
   .hero-sub {
@@ -499,7 +610,21 @@ blockquote cite {
   }
 
   .stat-number {
-    font-size: 3rem;
+    font-size: 3.5rem;
+  }
+
+  .stat-divider {
+    display: none;
+  }
+
+  blockquote {
+    padding: 0 20px;
+    font-size: 1.2rem;
+  }
+
+  blockquote::before {
+    font-size: 5rem;
+    top: -20px;
   }
 
   .footer-inner {
@@ -511,5 +636,10 @@ blockquote cite {
   .footer-right {
     flex-direction: column;
     gap: 8px;
+  }
+
+  .hero-blob {
+    width: 400px;
+    height: 400px;
   }
 }
