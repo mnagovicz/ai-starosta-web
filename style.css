@@ -790,6 +790,59 @@ blockquote cite {
   padding: 0 24px 20px;
 }
 
+/* === PROBLEM SECTION === */
+.problem-list {
+  display: flex;
+  align-items: stretch;
+  max-width: 900px;
+  margin: 56px auto 0;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.problem-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 40px 36px;
+  transition: background 0.3s ease;
+}
+
+.problem-item:hover {
+  background: rgba(168, 85, 247, 0.05);
+}
+
+.problem-icon {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.problem-text h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f5f5f7;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+
+.problem-text p {
+  font-size: 0.9rem;
+  color: #86868b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.problem-divider {
+  width: 1px;
+  background: rgba(255,255,255,0.07);
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
 /* === FADE ANIMATION (Apple-style) === */
 .fade-up {
   opacity: 0;
@@ -875,6 +928,17 @@ blockquote cite {
   .hero-blob {
     width: 400px;
     height: 400px;
+  }
+
+  .problem-list {
+    flex-direction: column;
+  }
+  .problem-divider {
+    width: auto;
+    height: 1px;
+  }
+  .problem-item {
+    padding: 28px 24px;
   }
 }
 
