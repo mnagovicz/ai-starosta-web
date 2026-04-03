@@ -564,6 +564,232 @@ blockquote cite {
   color: #A855F7;
 }
 
+/* === NAV LINK === */
+.nav-link {
+  color: #86868b;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: #f5f5f7;
+}
+
+/* === SECTION LABEL & SUBTITLE === */
+.section-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #A855F7;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #86868b;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* === PRICING === */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 860px;
+  margin: 64px auto 0;
+}
+
+.pricing-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-card:hover {
+  border-color: rgba(168, 85, 247, 0.3);
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.08);
+}
+
+.pricing-featured {
+  border-color: rgba(168, 85, 247, 0.5);
+  background: rgba(168, 85, 247, 0.06);
+}
+
+.pricing-featured:hover {
+  border-color: rgba(168, 85, 247, 0.8);
+  box-shadow: 0 0 60px rgba(168, 85, 247, 0.15);
+}
+
+.pricing-tag {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #A855F7;
+  font-weight: 600;
+}
+
+.pricing-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #f5f5f7;
+  margin: 0;
+}
+
+.pricing-amount {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #f5f5f7;
+  line-height: 1;
+}
+
+.pricing-unit {
+  font-size: 1.25rem;
+  color: #86868b;
+  font-weight: 400;
+}
+
+.pricing-desc {
+  color: #86868b;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.pricing-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 4px 0;
+}
+
+.pricing-grant-label {
+  font-size: 0.8rem;
+  color: #86868b;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.pricing-grants {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.grant-badge {
+  background: rgba(168, 85, 247, 0.1);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  color: #A855F7;
+  font-size: 0.8rem;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+.pricing-includes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pricing-includes li {
+  color: #f5f5f7;
+  font-size: 1rem;
+}
+
+.pricing-btn {
+  margin-top: auto;
+  text-align: center;
+}
+
+.pricing-note {
+  text-align: center;
+  color: #86868b;
+  font-size: 0.9rem;
+  max-width: 600px;
+  margin: 40px auto 64px;
+  line-height: 1.6;
+}
+
+/* === FAQ === */
+.faq-list {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.faq-item:hover {
+  border-color: rgba(168, 85, 247, 0.25);
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 20px 24px;
+  color: #f5f5f7;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: inherit;
+}
+
+.faq-icon {
+  color: #A855F7;
+  font-size: 1.25rem;
+  font-weight: 300;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  color: #86868b;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  padding: 0 24px;
+  transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), padding 0.3s ease;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 200px;
+  padding: 0 24px 20px;
+}
+
 /* === FADE ANIMATION (Apple-style) === */
 .fade-up {
   opacity: 0;
@@ -589,6 +815,14 @@ blockquote cite {
 
   .grid-2 {
     grid-template-columns: 1fr;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-amount {
+    font-size: 2.5rem;
   }
 
   .section {
