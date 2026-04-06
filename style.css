@@ -503,6 +503,13 @@ blockquote cite {
   height: 112px;
 }
 
+.media-loga-all {
+  max-width: 100%;
+  height: auto;
+  max-height: 80px;
+  object-fit: contain;
+}
+
 /* === CONTACT FORM === */
 .contact-form {
   max-width: 480px;
