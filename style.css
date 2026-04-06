@@ -494,15 +494,10 @@ blockquote cite {
 }
 
 .media-logo {
-  height: 28px;
+  height: 32px;
   width: auto;
   object-fit: contain;
-  filter: grayscale(100%) brightness(0.7);
-  transition: filter 0.2s;
-}
-
-.media-badge-logo:hover .media-logo {
-  filter: grayscale(0%) brightness(1);
+  mix-blend-mode: screen;
 }
 
 /* === CONTACT FORM === */
