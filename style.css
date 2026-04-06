@@ -499,6 +499,10 @@ blockquote cite {
   object-fit: contain;
 }
 
+.media-logo-ct {
+  height: 56px;
+}
+
 /* === CONTACT FORM === */
 .contact-form {
   max-width: 480px;
