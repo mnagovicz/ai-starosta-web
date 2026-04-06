@@ -1033,6 +1033,17 @@ blockquote cite {
   flex-wrap: wrap;
 }
 
+.demo-steps-vertical {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.demo-step-arrow-down {
+  padding-left: 8px;
+  font-size: 1.25rem;
+}
+
 .demo-step {
   display: flex;
   align-items: center;
