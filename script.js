@@ -60,9 +60,9 @@ form.addEventListener('submit', async (e) => {
 
   const data = {
     name: form.querySelector('[name="name"]')?.value || '',
-    obec: form.querySelector('[name="obec"]')?.value || '',
+    obec: form.querySelector('[name="city"]')?.value || '',
     email: form.querySelector('[name="email"]')?.value || '',
-    telefon: form.querySelector('[name="telefon"]')?.value || '',
+    telefon: form.querySelector('[name="phone"]')?.value || '',
   };
 
   try {
