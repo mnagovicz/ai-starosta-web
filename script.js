@@ -52,10 +52,38 @@ if (blob) {
 const form = document.getElementById('contact-form');
 const success = document.getElementById('form-success');
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  form.hidden = true;
-  success.hidden = false;
+  const btn = form.querySelector('button[type="submit"]');
+  btn.disabled = true;
+  btn.textContent = 'Odesílám…';
+
+  const data = {
+    name: form.querySelector('[name="name"]')?.value || '',
+    obec: form.querySelector('[name="obec"]')?.value || '',
+    email: form.querySelector('[name="email"]')?.value || '',
+    telefon: form.querySelector('[name="telefon"]')?.value || '',
+  };
+
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    if (res.ok) {
+      form.hidden = true;
+      success.hidden = false;
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Požádat o demo';
+      alert('Nepodařilo se odeslat formulář. Zkuste to prosím znovu.');
+    }
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = 'Požádat o demo';
+    alert('Chyba připojení. Zkuste to prosím znovu.');
+  }
 });
 
 // FAQ accordion
