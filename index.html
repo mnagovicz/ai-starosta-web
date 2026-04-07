@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>emailjs.init("LXEdA6xywwrvMh4dD");</script>
 </head>
 <body>
 
@@ -35,7 +37,11 @@
       </div>
       <div class="hero-video fade-up">
         <div class="hero-video-border"></div>
-        <span>▶ Ukázka AI Starosty</span>
+        <video controls playsinline preload="metadata"
+          style="width:100%;border-radius:16px;display:block;"
+          poster="">
+          <source src="https://is-delivery-spots.s3.eu-west-1.amazonaws.com/ai-starosta-web/ai-starosta.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
   </section>
