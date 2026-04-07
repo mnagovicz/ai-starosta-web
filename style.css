@@ -1089,3 +1089,47 @@ blockquote cite {
     gap: 12px;
   }
 }
+
+
+/* ── PHOTO SLIDER ── */
+.photo-slider {
+  position: relative;
+  max-width: 800px;
+  margin: 2rem auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+}
+.slider-track {
+  position: relative;
+  width: 100%;
+}
+.slider-img {
+  width: 100%;
+  display: none;
+  border-radius: 16px;
+  object-fit: cover;
+  max-height: 500px;
+}
+.slider-img.active {
+  display: block;
+}
+.slider-dots {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.dot.active {
+  background: #fff;
+}

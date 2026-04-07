@@ -137,8 +137,19 @@
         „Každý starosta v Česku někdy snil o tom, jaké by to bylo, kdyby se mohl naklonovat. Nám se tento sen podařilo přetavit v realitu."
         <cite>Martin Žabčík, starosta Ratiboře</cite>
       </blockquote>
-      <div class="photo-placeholder fade-up">
-        <span>📸 foto ze spuštění 9. 4. 2026</span>
+      <div class="photo-slider fade-up">
+        <div class="slider-track" id="sliderTrack">
+          <img src="photo1.jpg" alt="Spuštění AI Starosty v Ratibořích" class="slider-img active">
+          <img src="photo2.jpg" alt="Spuštění AI Starosty v Ratibořích" class="slider-img">
+          <img src="photo3.jpg" alt="Spuštění AI Starosty v Ratibořích" class="slider-img">
+          <img src="photo4.jpg" alt="Spuštění AI Starosty v Ratibořích" class="slider-img">
+        </div>
+        <div class="slider-dots" id="sliderDots">
+          <span class="dot active" onclick="goToSlide(0)"></span>
+          <span class="dot" onclick="goToSlide(1)"></span>
+          <span class="dot" onclick="goToSlide(2)"></span>
+          <span class="dot" onclick="goToSlide(3)"></span>
+        </div>
       </div>
       <div class="media-badges fade-up">
         <img src="loga.png" alt="Česká televize, Nova, Prima" class="media-loga-all">

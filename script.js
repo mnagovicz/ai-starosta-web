@@ -93,6 +93,23 @@ form.addEventListener('submit', async (e) => {
   }
 });
 
+// Photo slider
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slider-img');
+const dots = document.querySelectorAll('.dot');
+
+function goToSlide(n) {
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = (n + slides.length) % slides.length;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+
+if (slides.length > 0) {
+  setInterval(() => goToSlide(currentSlide + 1), 4000);
+}
+
 // FAQ accordion
 document.querySelectorAll(".faq-question").forEach(btn => {
   btn.addEventListener("click", () => {
