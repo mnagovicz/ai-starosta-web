@@ -59,11 +59,18 @@ form.addEventListener('submit', async (e) => {
   btn.textContent = 'Odesílám…';
 
   const data = {
-    name: form.querySelector('[name="name"]')?.value || '',
-    obec: form.querySelector('[name="city"]')?.value || '',
-    email: form.querySelector('[name="email"]')?.value || '',
-    telefon: form.querySelector('[name="phone"]')?.value || '',
+    name: form.querySelector('[name="name"]')?.value.trim() || '',
+    obec: form.querySelector('[name="city"]')?.value.trim() || '',
+    email: form.querySelector('[name="email"]')?.value.trim() || '',
+    telefon: form.querySelector('[name="phone"]')?.value.trim() || '',
   };
+
+  if (!data.name || !data.obec || !data.email || !data.telefon) {
+    btn.disabled = false;
+    btn.textContent = 'Požádat o demo';
+    alert('Prosím vyplňte všechna pole formuláře.');
+    return;
+  }
 
   try {
     const res = await fetch('/api/contact', {
