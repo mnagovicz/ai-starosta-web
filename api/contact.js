@@ -39,7 +39,7 @@ module.exports = async (req, res) => {
               <tr><td style="padding: 6px 16px 6px 0; font-weight: bold;">E-mail:</td><td><a href="mailto:${email}">${email}</a></td></tr>
               <tr><td style="padding: 6px 16px 6px 0; font-weight: bold;">Telefon:</td><td>${telefon || "—"}</td></tr>
             </table>
-            <p style="margin-top: 24px; color: #888; font-size: 13px;">Odesláno z ai-starosta.vercel.app</p>
+            <p style="margin-top: 24px; color: #888; font-size: 13px;">Odesláno z aistarosta.cz</p>
           `,
           Charset: "UTF-8",
         },
