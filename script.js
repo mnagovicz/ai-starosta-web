@@ -110,6 +110,32 @@ if (slides.length > 0) {
   setInterval(() => goToSlide(currentSlide + 1), 4000);
 }
 
+// ── MEDIA STACK — scroll-driven sticky cards ──
+(function() {
+  const cards = document.querySelectorAll('.media-card');
+  if (!cards.length) return;
+
+  // Prahové hodnoty scrollu pro každou kartu
+  // Karta se "odhalí" když se její sticky kontejner dostane do viewportu
+  const stickies = document.querySelectorAll('.media-card-sticky');
+
+  function checkCards() {
+    stickies.forEach((sticky, i) => {
+      const rect = sticky.getBoundingClientRect();
+      const card = sticky.querySelector('.media-card');
+      if (!card) return;
+
+      // Karta se zobrazí když sticky kontejner je viditelný
+      if (rect.top < window.innerHeight * 0.85 && rect.bottom > 0) {
+        card.classList.add('is-visible');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', checkCards, { passive: true });
+  checkCards(); // Init check
+})();
+
 // FAQ accordion
 document.querySelectorAll(".faq-question").forEach(btn => {
   btn.addEventListener("click", () => {
