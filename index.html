@@ -7,7 +7,7 @@
   <meta name="description" content="AI Starosta odpovídá občanům místo vás přirozenou konverzací, bez čekání na úřední hodiny.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400;1,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>emailjs.init("LXEdA6xywwrvMh4dD");</script>
@@ -15,11 +15,16 @@
 <body>
 
   <!-- NAVBAR -->
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Hlavní navigace">
     <div class="container navbar-inner">
       <a href="#" class="navbar-logo">
         <img src="public/img/logo-white.png" alt="AI Produkce" height="32">
       </a>
+      <div class="navbar-links">
+        <a href="#jak">Jak to funguje</a>
+        <a href="#ratibor">Reference</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
       <a href="#kontakt" class="btn btn-primary btn-sm">Chci vědět víc</a>
     </div>
   </nav>
@@ -263,73 +268,20 @@
     </div>
   </section>
 
-  <!-- INVESTICE -->
-  <section id="investice" class="section section-dark" style="display:none">
-    <div class="container">
-      <div class="section-label">Transparentní ceny</div>
-      <h2 class="section-title">Kolik to stojí?</h2>
-      <p class="section-subtitle">Dvě položky. Žádná skrytá čísla.</p>
-
-      <div class="pricing-grid">
-        <!-- Karta 1 -->
-        <div class="pricing-card animate-on-scroll">
-          <div class="pricing-tag">Jednorázová investice</div>
-          <h3 class="pricing-title">Pořízení</h3>
-          <p class="pricing-desc">Hardware, instalace, digitalizace postavy starosty a zprovoznění znalostní báze.</p>
-          <div class="pricing-divider"></div>
-          <p class="pricing-grant-label">Způsobilý výdaj pro dotace</p>
-          <div class="pricing-grants">
-            <span class="grant-badge">IROP</span>
-            <span class="grant-badge">Národní plán obnovy</span>
-            <span class="grant-badge">Krajské programy</span>
-          </div>
-          <a href="#kontakt" class="btn btn-secondary pricing-btn">Pomůžeme vám s dotací</a>
-        </div>
-
-        <!-- Karta 2 — zvýrazněná -->
-        <div class="pricing-card pricing-featured animate-on-scroll">
-          <div class="pricing-tag">Roční paušál</div>
-          <div class="pricing-amount">49 900 <span class="pricing-unit">Kč / rok</span></div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-includes">
-            <li>✓ Provoz 24/7</li>
-            <li>✓ Aktualizace znalostní databáze</li>
-            <li>✓ Technická podpora</li>
-          </ul>
-          <a href="#kontakt" class="btn btn-primary pricing-btn">Mám zájem</a>
-        </div>
-      </div>
-
-      <p class="pricing-note">Pořizovací náklady jsou způsobilým výdajem dotačních programů na digitalizaci samosprávy. Rádi vám pomůžeme s přípravou žádosti.</p>
-
-      <!-- FAQ -->
-      <div class="faq-list">
-        <div class="faq-item animate-on-scroll">
-          <button class="faq-question">Co zahrnuje digitalizace postavy?<span class="faq-icon">+</span></button>
-          <div class="faq-answer">Jeden natáčecí den — záznam hlasu, tváře a mimiky starosty. Ze záznamu vytvoříme věrného digitálního dvojníka, který mluví a vypadá jako skutečný starosta.</div>
-        </div>
-        <div class="faq-item animate-on-scroll">
-          <button class="faq-question">Co když dotaci nezískáme?<span class="faq-icon">+</span></button>
-          <div class="faq-answer">Nabízíme splátkový plán pořizovacích nákladů rozložený na 3 roky. Rádi probereme možnosti na osobní schůzce.</div>
-        </div>
-        <div class="faq-item animate-on-scroll">
-          <button class="faq-question">Kdo vlastní hardware?<span class="faq-icon">+</span></button>
-          <div class="faq-answer">Obec. Panel je váš majetek od prvního dne.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- KONTAKT -->
   <section id="kontakt" class="section section-dark">
     <div class="container">
       <h2 class="section-title fade-up">Domluvme si 30minutový hovor</h2>
       <p class="section-sub fade-up">Ukážeme vám, jak AI Starosta funguje — bez závazků.</p>
       <form id="contact-form" class="contact-form fade-up">
-        <input type="text" name="name" placeholder="Jméno a příjmení" required>
-        <input type="text" name="city" placeholder="Název obce/města" required>
-        <input type="email" name="email" placeholder="E-mail" required>
-        <input type="tel" name="phone" placeholder="Telefon" required>
+        <label for="name" class="sr-only">Jméno a příjmení</label>
+        <input type="text" id="name" name="name" placeholder="Jméno a příjmení" required>
+        <label for="city" class="sr-only">Název obce/města</label>
+        <input type="text" id="city" name="city" placeholder="Název obce/města" required>
+        <label for="email" class="sr-only">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="E-mail" required>
+        <label for="phone" class="sr-only">Telefon</label>
+        <input type="tel" id="phone" name="phone" placeholder="Telefon" required>
         <button type="submit" class="btn btn-primary btn-full">Odeslat</button>
       </form>
       <div id="form-success" class="form-success" hidden>
