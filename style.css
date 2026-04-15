@@ -127,9 +127,33 @@ ul {
   height: 52px;
 }
 
+.navbar-logos {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .navbar-logo img {
   height: 32px;
   width: auto;
+}
+
+.navbar-logo-partner img {
+  height: 24px;
+  width: auto;
+  opacity: 0.85;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.2s;
+}
+
+.navbar-logo-partner:hover img {
+  opacity: 1;
+}
+
+.navbar-logo-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .navbar-links {
